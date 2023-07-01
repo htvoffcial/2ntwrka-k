@@ -1,19 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <title>2組ログイン</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-  <h1>Login Page</h1>
-  <form id="loginForm" method="POST">
-    <label for="username">Username:</label>
+  <div id="l-flex">
+  <div id="loginbox">
+    <center><small id="mmt">2組IDでログイン</small></center>
+  <form id="loginform" method="POST">
+    <div id="inputing">
+      <label style="font-weight: bold;font-size: 20px;">2組サイト(仮)にログイン</label><br>
+    <label for="username">ユーザ名</label><br>
     <input type="text" id="username" name="username" required><br>
-    <label for="password">Password:</label>
+    <label for="password">パスワード</label><br>
     <input type="password" id="password" name="password" required><br>
-    <input type="submit" value="Login">
+    <input type="submit" value="ログイン">
+    </div>
+
   </form>
-  
+</div>
+</div>
+  <style>
+    #mmt{
+      margin-top: 2px;
+      font-size: 12px;
+    }
+    @media screen and (max-width: 480px) { 
+      #l-flex{
+
+      }
+    }
+    #inputing{
+      transform: translateX(20%)translateY(160%);
+    }
+    #username,#password{
+      margin: 10px;
+    outline: 0;
+    display: inline-block;
+    opacity: 0.8;
+    border: none;
+    padding: 6px;
+    border-bottom: solid 2px chocolate;
+    }
+    #l-flex{
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0px;
+      left:0px;
+      display: flexbox;
+      background:url(https://ul.h3z.jp/NgB2ytzl.png);
+
+    }
+
+    #loginbox{
+      box-shadow: 10px  0px 320px 10px gray;
+      position: absolute;
+      top:20px;
+      left:60px;
+      height:calc(100% - 20px);
+      width:42%;
+      background-color: aliceblue;
+      border-radius:10px 10px 0px 0px;
+    }
+  </style>
   <script>
     $(document).ready(function() {
       $("#loginForm").submit(function(event) {
