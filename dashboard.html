@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <div id="syuxtusekinumber"></div>
+  <div id="usert1"></div>
+  <div>
+    
+  </div>
+  <script>
+      // $(document).ready(function() {
+      // ログイン後の画面でユーザーデータを取得するリクエストを送信
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+        method: "POST",
+        data: { 
+          action: "getUserData",
+          username: localStorage.getItem("id1") // ログインしたユーザーのユーザー名を設定
+        },
+        success: function(response) {
+          var userd1 = response.split(",");
+          $("#userDataValue").text(response); // ユーザーデータを表示
+          $("#syuxtusekinumber").text(userd1[0]);
+          $("#usert1").text(userd1[2]);
+        },
+        error: function() {
+          alert("An error occurred while fetching user data."); // ユーザーデータの取得中にエラーが発生した場合のエラーメッセージ
+        }
+      });
+    </script>
+</body>
+<style>
+        #syuxtusekinumber{
+        display:inline-block;
+        border:solid 2px aquamarine;
+        padding:2px;border-radius: 5px;
+    }    
+    #syuxtusekinumber::before{
+        background-color: aquamarine;
+        content:"出席番号";
+    }    
+</style>
+</html>
