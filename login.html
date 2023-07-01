@@ -11,18 +11,28 @@
     <center><small id="mmt">2組IDでログイン</small></center>
   <form id="loginform" method="POST">
     <div id="inputing">
-      <label style="font-weight: bold;font-size: 20px;">2組サイト(仮)にログイン</label><br>
+      <label style="font-weight: bold;font-size: 20px;">2組サイト(仮)にログイン</label><br><br>
     <label for="username">ユーザ名</label><br>
-    <input type="text" id="username" name="username" required><br>
+    <input type="text" id="username" name="username" required><br><br>
     <label for="password">パスワード</label><br>
-    <input type="password" id="password" name="password" required><br>
-    <input type="submit" value="ログイン">
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="続ける" id="camsb">
     </div>
 
   </form>
 </div>
+<div id="loadbox">
+<div id="center1">認証中...</div>
+</div>
 </div>
   <style>
+    #camsb{
+      border: none;
+      padding: 10px 12px 10px 12px;
+      font-weight: bold;
+      background: chocolate;
+      border-radius: 10px;
+    }
     #mmt{
       margin-top: 2px;
       font-size: 12px;
@@ -33,7 +43,11 @@
       }
     }
     #inputing{
-      transform: translateX(20%)translateY(160%);
+      transform: translateX(20%)translateY(60%);
+    }
+    #center1{
+      font-size:small;
+      transform: translateX(15vw)translateY(40vh);
     }
     #username,#password{
       margin: 10px;
@@ -65,10 +79,23 @@
       background-color: aliceblue;
       border-radius:10px 10px 0px 0px;
     }
+    #loadbox{
+      display: none;
+      box-shadow: 10px  0px 320px 10px gray;
+      position: absolute;
+      top:20px;
+      left:60px;
+      height:calc(100% - 20px);
+      width:42%;
+      background-color: aliceblue;
+      border-radius:10px 10px 0px 0px;
+      z-index:1000;
+    }
   </style>
   <script>
     $(document).ready(function() {
       $("#loginForm").submit(function(event) {
+        document.getElementById("loadbox").style.display="block";
         event.preventDefault(); // フォームのデフォルトの送信を防ぐ
         var username = $("#username").val();
         var password = $("#password").val();
@@ -87,6 +114,7 @@
               window.location.href = "dashboard.html"; // ログイン成功時にダッシュボードページにリダイレクト
             } else {
               alert("Invalid username or password."); // ログイン失敗時のエラーメッセージ
+              document.getElementById("loadbox").style.display="none";
             }
           },
           error: function() {
