@@ -16,7 +16,7 @@
     <input type="text" id="username" name="username" required><br><br>
     <label for="password">パスワード</label><br>
     <input type="password" id="password" name="password" required><br><br>
-    <input type="button" value="続ける" id="camsb">
+    <input type="button" value="続ける" id="camsb" onclick="camsb()">
     </div>
 
   </form>
@@ -93,8 +93,7 @@
     }
   </style>
   <script>
-    $(document).ready(function() {
-      $('camsb').click(function() {
+function camsb(){
         document.getElementById("loadbox").style.display="block";
         var username = $("#username").val();
         var password = $("#password").val();
@@ -120,8 +119,7 @@
             alert("An error occurred while processing your request."); // リクエストの処理中にエラーが発生した場合のエラーメッセージ
           }
         });
-      });
-    });
+      }
   </script>
 </body>
 </html>
