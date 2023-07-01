@@ -95,8 +95,8 @@
   <script>
     $(document).ready(function() {
       $("#loginForm").submit(function(event) {
+        event.preventDefault();
         document.getElementById("loadbox").style.display="block";
-        event.preventDefault(); // フォームのデフォルトの送信を防ぐ
         var username = $("#username").val();
         var password = $("#password").val();
         localStorage.setItem("id1",username);
