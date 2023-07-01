@@ -16,7 +16,7 @@
     <input type="text" id="username" name="username" required><br><br>
     <label for="password">パスワード</label><br>
     <input type="password" id="password" name="password" required><br><br>
-    <input type="submit" value="続ける" id="camsb">
+    <input type="button" value="続ける" id="camsb">
     </div>
 
   </form>
@@ -94,8 +94,7 @@
   </style>
   <script>
     $(document).ready(function() {
-      $("#loginForm").submit(function(event) {
-        event.preventDefault();
+      $('camsb').click(function() {
         document.getElementById("loadbox").style.display="block";
         var username = $("#username").val();
         var password = $("#password").val();
