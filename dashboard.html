@@ -6,16 +6,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-  <div id="syuxtusekinumber"></div>
-  <div id="usert1"></div>
-  <h1>MENU</h1>
+  2組ID<span id="syuxtusekinumber"></span><span id="usert2"></span>
+  <h1 style="background-color:lightgoldenrodyellow;">MENU</h1>
+  ようこそ<span id="usert1"></span>さん<br>
   <a href="index.html">ありがとう3000回プロジェクト!</a>
   <div>
     
   </div>
   <script>
+    function replaceWithAsterisk(str) {
+  var length = Math.ceil(str.length * 0.6);
+  var replaceCount = Math.min(length, str.length); // 60%よりも文字列の長さが短い場合は文字列全体を置き換える
+
+  var chars = str.split('');
+  for (var i = 0; i < replaceCount; i++) {
+    chars[i] = '*';
+  }
+
+  return chars.join('');
+}
       // $(document).ready(function() {
       // ログイン後の画面でユーザーデータを取得するリクエストを送信
+      
       $.ajax({
         url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
         method: "POST",
@@ -24,15 +36,18 @@
           username: localStorage.getItem("id1") // ログインしたユーザーのユーザー名を設定
         },
         success: function(response) {
-          var userd1 = response.split(",");
+          var userd1 = JSON.parse(response);
           $("#userDataValue").text(response); // ユーザーデータを表示
           $("#syuxtusekinumber").text(userd1[0]);
           $("#usert1").text(userd1[2]);
+          var rsas = replaceWithAsterisk(localStorage.getItem("id1"));
+          $("#usert2").text(rsas);
         },
         error: function() {
           alert("An error occurred while fetching user data."); // ユーザーデータの取得中にエラーが発生した場合のエラーメッセージ
         }
       });
+      
     </script>
 </body>
 <style>
