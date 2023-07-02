@@ -5,7 +5,6 @@
     <!--(c) 2022 はるはる-->
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="script.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
    <meta property="og:title" content="喜びを共有するプロジェクト">
 <meta property="og:url" content="https://moonlit-bonbon-7751df.netlify.app/%E5%96%9C%E3%81%B3">
@@ -15,38 +14,104 @@
     <!--メタ情報　及び　外部スクリプト読み込み of 終わり-->
   </head>
   <body>
-
   <topbar></topbar>
     <!--ページ内コンテンツ-->
      <div id="toppage" class="page">
 　　　<!-- ページ1 -->
          <center><img src="content1.gif" id="logo"><br>
+
             <div id="todayresult">
             </div>
-         <share onclick="share()"></share></center>
-         <center><bmg>&copy;2023 3-2 /<a href="info.html#all">このサイトの詳細</a><br>※SNSのアプリ内ブラウザでは動作しません</bmg></center>
+         <share onclick="push()"></share>
+        </center>
+         <center><bmg>&copy;2023 3-2 /<a href="info.html#all">このサイトの詳細</a><br>※数値はリアルタイムではない可能性があります</bmg></center>
      </div>
-     <div id="sharepage" class="page">
-　　　<!-- ページ2 -->
-         <center><h1>共有しました!</h1></center>
-       <form id='db' method='post' name='database'><input type='hidden' name='form-name' value='database' /><input type="hidden" id="name" name="name"><input type="hidden" id="id" name="id"></form>
-     </div>
+ <div id="tmp"></div>
      <div id="spop">
       <p id="dp"></p>
      </div>
-    <script>
-function closepopup(){document.getElementById("spop").style.display="none";}
-     var url = new URL(location.href);
-     var result = url.searchParams.get("token");
-function reportthisuser(){
-location.href="report.html?token="+result;
-}
-     if(result.length==9){
-     document.getElementById("dp").innerHTML="ID<b>"+encodeURIComponent(result)+"</b>があなたに喜びを共有しました<br><close onclick='closepopup()'></close><report onclick='reportthisuser()'></report>";
-    document.getElementById("spop").className="pp";}
+     <script>
 
+        var userd1;
+      $(document).ready(function() {
+
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+        method: "POST",
+        data: { 
+          action: "getUserData",
+          username: "admin" // ログインしたユーザーのユーザー名を設定
+        },
+        success: function(response) {
+          userd1 = JSON.parse(response);
+          localStorage.setItem("pushon",userd1[3])
+          if(localStorage.getItem("pushon")||localStorage.getItem("pushlo")){
+      var pussh = localStorage.getItem("pushon");
+      var ct = localStorage.getItem("pushlo");
+      document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>"+ct+"</span><span style='font-size:50px;'>/25回</span><br><span style='font-size:30px;font-weight:bold;'>これまでの合計(アカウント連携):"+ pussh +"</span>";
+      }else{
+      var pussh = 0;
+      localStorage.setItem("pushon",pussh);
+      var ct = 0;
+      localStorage.setItem("pushlo",ct);
+      }; 
+        },
+        error: function() {
+          alert("An error occurred while fetching user data."); // ユーザーデータの取得中にエラーが発生した場合のエラーメッセージ
+        }
+      });
+    });
+
+    function resetLocalStorage() {
+  const today = new Date().toLocaleDateString(); // 現在の日付を取得
+
+  // ローカルストレージからデータを取得
+  const pushsuiiData = localStorage.getItem("pushsuii");
+
+  if (pushsuiiData) {
+    const { date, count } = JSON.parse(pushsuiiData);
+
+    // 今日の日付と保存されている日付が異なる場合はリセット
+    if (date !== today) {
+      localStorage.removeItem("pushon");
+      localStorage.setItem("pushsuii", JSON.stringify({ date: today, count: 0 }));
+    }
+  } else {
+    // pushsuiiデータが存在しない場合は初期化
+    localStorage.setItem("pushsuii", JSON.stringify({ date: today, count: 0 }));
+  }
+}
+var fflag =0;
+function push() {
+  ct++;
+  localStorage.setItem("pushlo",ct);
+  let ct = parseInt(localStorage.getItem("pushlo") || 0) + 1;
+  document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>"+ct+"</span><span style='font-size:50px;'>/25回</span><span style='font-size:50px;font-weight:bold;'>これまでの合計(アカウント連携):"+ pussh +"</span>";
+  //localStorage.setItem("pushlo", );
+  resetLocalStorage(); // 日付が変わった場c合の処理
+  gchg();
+}
+
+
+function gchg(){
+  var currentDate = new Date();
+  fflag++;
+  if(fflag==3){
+
+    var aar = [...userd1];
+    aar[3]=localStorage.getItem("pushlo");
+    console.log(aar);
+    $.post("https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec", { action: "updateUserData",username: "admin", newData: JSON.stringify(aar)});
+
+  fflag=0;
+  }
+}
     </script>
     <style>
+      #todayresult{
+        margin-top: 50px;
+        color:#21A0DB;
+      }
      close:after{
        display:inline-block;
        color:#fff;
@@ -70,7 +135,6 @@ location.href="report.html?token="+result;
       cursor:pointer;
       font-weight:bold;
       font-size:10px;
-      font-decoration:underline;
      }
      #spop{
        position:absolute;
@@ -95,24 +159,8 @@ location.href="report.html?token="+result;
      }
      #logo{
         width:230px;
-       margin-top:8vw;
+       margin-top:5vw;
      }
-     @media screen and (max-width: 640px) {
-       #logo{
-       margin-top:20vw;
-       }
-      share:after{
-       display:inline-block;
-       margin-top:30vw;
-       content:"ありがとう";
-       color:#fff;
-       font-weight:bold;
-       padding:16vw 15vw 16vw 15vw;
-       background-color:#21A0DB;
-       border-radius:50%;
-      }
-     }
-     
      #sharepage{
       width:100%;
       display:none;
@@ -120,11 +168,11 @@ location.href="report.html?token="+result;
      }
       share:after{
        display:inline-block;
-       margin-top:5vw;
+       margin-top:2vw;
        content:"ありがとう!";
        color:#fff;
        font-weight:bold;
-       padding:5vw 2.5vw 5vw 2.5vw;
+       padding:5vw 2.7vw 5vw 2.7vw;
        background-color:#21A0DB;
        border-radius:50%;
       }
@@ -142,7 +190,7 @@ location.href="report.html?token="+result;
         left:0px;
       }
       topbar:after{
-        content:"喜びを共有するプロジェクト";
+        content:"ありがとう3000回プロジェクト";
       }
       topbar {
         display: block;
@@ -163,6 +211,22 @@ location.href="report.html?token="+result;
         height: 20%;
        }
      }
+     @media screen and (max-width: 480px) {
+       #logo{
+       margin-top:20vw;
+       }
+      share:after{
+       display:inline-block;
+       margin-top:30vw;
+       content:"ありがとう";
+       color:#fff;
+       font-weight:bold;
+       padding:16vw 15vw 160vw 15vw;
+       background-color:#21A0DB;
+       border-radius:50%;
+      }
+     }
+     
     </style>
     <!--ページ内コンテンツ of 終わり-->
   </body>
