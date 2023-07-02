@@ -22,7 +22,7 @@
 
             <div id="todayresult">
             </div>
-            <p>「ありがとう」を言った回数押そう！</p>
+            <p style="margin-top: 30px;color: #a1a3a6;">「ありがとう」を言った回数押そう！</p>
          <share onclick="push()"></share>
         </center>
          <center><bmg>&copy;2023 3-2 /<a href="info.html#all">このサイトの詳細</a><br>※数値はリアルタイムではない可能性があります</bmg></center>
@@ -76,7 +76,7 @@ function push() {
   localStorage.setItem('buttonData', JSON.stringify(btnc));
   console.log(`ボタンが${btnc.count}回クリックされました。`);
   gchg();
-  document.getElementById("todayresult").innerHTML="<span style='font-size:80px;font-weight:bold;'>"+btnc.count+1+"</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計："+userd1[3]+"</span>";
+  document.getElementById("todayresult").innerHTML="<span style='font-size:80px;font-weight:bold;'>"+btnc.count+"</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計："+userd1[3]+"</span>";
 }
 
 
@@ -174,7 +174,7 @@ function gchg() {
      }
       share:after{
        display:inline-block;
-       margin-top:2vw;
+      
        content:"ありがとう!";
        color:#fff;
        font-weight:bold;
@@ -232,7 +232,7 @@ function gchg() {
        }
       share:after{
         display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
     content: "ありがとう";
     color: #fff;
     font-weight: bold;
