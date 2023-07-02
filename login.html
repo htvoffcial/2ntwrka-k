@@ -24,8 +24,13 @@
 <div id="loadbox">
 <div id="center1">認証中...</div>
 </div>
+<div class="blur"></div>
 </div>
   <style>
+    body{
+      width: 100%;
+      height: 100%;
+    }
     #camsb{
       border: none;
       padding: 10px 12px 10px 12px;
@@ -37,11 +42,7 @@
       margin-top: 2px;
       font-size: 12px;
     }
-    @media screen and (max-width: 480px) { 
-      #l-flex{
-
-      }
-    }
+    
     #inputing{
       transform: translateX(20%)translateY(60%);
     }
@@ -78,6 +79,7 @@
       width:42%;
       background-color: aliceblue;
       border-radius:10px 10px 0px 0px;
+      
     }
     #loadbox{
       display: none;
@@ -91,6 +93,54 @@
       border-radius:10px 10px 0px 0px;
       z-index:1000;
     }
+    @media screen and (max-width: 600px) { 
+      #l-flex{
+      width:100%;
+      height:100%;
+      position: absolute;
+      top:0px;
+      left:0px;
+      background:url(https://ul.h3z.jp/NgB2ytzl.png);
+      
+    }
+      #inputing{
+        display:inline-block;
+      transform: translateX(10%)translateY(40%);
+     }
+     .blur{
+      position: absolute;
+      top:0px;
+      left:0px;
+      width: 100%;
+      height: 100%;
+      z-index:500;
+      filter: blur(64px);
+      background-color: aqua;
+     }
+      #loginbox{
+     z-index:999;
+      position: absolute;
+      top:50%;
+      left:50%;
+      height:calc(100% - 20px);
+      width:80%;
+      background-color: aliceblue;
+      border-radius:10px 10px 10px 10px;
+      transform: translateX(-50%)translateY(-50%);
+    }
+    #loadbox{
+      position: absolute;
+      top:50%;
+      left:50%;
+      height:calc(100% - 20px);
+      width:80%;
+      background-color: aliceblue;
+      border-radius:10px 10px 10px 10px;
+      transform: translateX(-50%)translateY(-50%);
+    }
+
+  }
+  body{font-family: 'Noto Sans JP', sans-serif;}
   </style>
   <script>
 function ddaa(){
