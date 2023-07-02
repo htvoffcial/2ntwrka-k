@@ -34,7 +34,10 @@
 
      </div>
      <script>
-
+if(localStorage.getItem('buttonData')){
+}else{
+  document.getElementById("ovr").className="remb";
+}
 var userd1;
 $(document).ready(function() {
   $.ajax({
@@ -49,6 +52,7 @@ $(document).ready(function() {
       var btnc = JSON.parse(localStorage.getItem('buttonData'));
       document.getElementById("todayresult").innerHTML="<span style='font-size:80px;font-weight:bold;'>"+btnc.count+"</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計："+userd1[3]+"</span>";
       document.getElementById("ovr").className="remb";
+      
     },
     error: function() {
       alert("ユーザーデータの取得中にエラーが発生しました。");
