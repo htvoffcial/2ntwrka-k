@@ -31,81 +31,75 @@
       <p id="dp"></p>
      </div>
      <script>
+var userd1;
 
-        var userd1;
-      $(document).ready(function() {
+$(document).ready(function() {
+  $.ajax({
+    url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+    method: "POST",
+    data: {
+      action: "getUserData",
+      username: "admin" // ログインしたユーザーのユーザー名を設定
+    },
+    success: function(response) {
+      userd1 = JSON.parse(response);
+      localStorage.setItem("pushon", userd1[3]);
+      if (localStorage.getItem("pushon") || localStorage.getItem("pushlo")) {
+        var pussh = localStorage.getItem("pushon");
+        var crt = localStorage.getItem("pushlo");
+        document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>" + crt + "</span><span style='font-size:50px;'>/25回</span><br><span style='font-size:30px;font-weight:bold;'>これまでの合計(アカウント連携):" + pussh + "</span>";
+      } else {
+        var pussh = 0;
+        localStorage.setItem("pushon", pussh);
+        var crt = 0;
+        localStorage.setItem("pushlo", crt);
+      };
+    },
+    error: function() {
+      alert("ユーザーデータの取得中にエラーが発生しました。");
+    }
+  });
+});
 
-      $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
-        method: "POST",
-        data: { 
-          action: "getUserData",
-          username: "admin" // ログインしたユーザーのユーザー名を設定
-        },
-        success: function(response) {
-          userd1 = JSON.parse(response);
-          localStorage.setItem("pushon",userd1[3])
-          if(localStorage.getItem("pushon")||localStorage.getItem("pushlo")){
-      var pussh = localStorage.getItem("pushon");
-      var ct = localStorage.getItem("pushlo");
-      document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>"+ct+"</span><span style='font-size:50px;'>/25回</span><br><span style='font-size:30px;font-weight:bold;'>これまでの合計(アカウント連携):"+ pussh +"</span>";
-      }else{
-      var pussh = 0;
-      localStorage.setItem("pushon",pussh);
-      var ct = 0;
-      localStorage.setItem("pushlo",ct);
-      }; 
-        },
-        error: function() {
-          alert("An error occurred while fetching user data."); // ユーザーデータの取得中にエラーが発生した場合のエラーメッセージ
-        }
-      });
-    });
-
-    function resetLocalStorage() {
+function resetLocalStorage() {
   const today = new Date().toLocaleDateString(); // 現在の日付を取得
-
-  // ローカルストレージからデータを取得
-  const pushsuiiData = localStorage.getItem("pushsuii");
+  const pushsuiiData = localStorage.getItem("pushsuii"); // ローカルストレージからデータを取得
 
   if (pushsuiiData) {
     const { date, count } = JSON.parse(pushsuiiData);
-
-    // 今日の日付と保存されている日付が異なる場合はリセット
     if (date !== today) {
       localStorage.removeItem("pushon");
       localStorage.setItem("pushsuii", JSON.stringify({ date: today, count: 0 }));
     }
   } else {
-    // pushsuiiデータが存在しない場合は初期化
     localStorage.setItem("pushsuii", JSON.stringify({ date: today, count: 0 }));
   }
 }
-var fflag =0;
+
+var fflag = 0;
+
 function push() {
-  ct++;
-  localStorage.setItem("pushlo",ct);
-  let ct = parseInt(localStorage.getItem("pushlo") || 0) + 1;
-  document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>"+ct+"</span><span style='font-size:50px;'>/25回</span><span style='font-size:50px;font-weight:bold;'>これまでの合計(アカウント連携):"+ pussh +"</span>";
-  //localStorage.setItem("pushlo", );
-  resetLocalStorage(); // 日付が変わった場c合の処理
+  let crt = parseInt(localStorage.getItem("pushlo") || 0) + 1;
+  localStorage.setItem("pushlo", crt);
+  let pussh = parseInt(localStorage.getItem("pushon") || 0);
+  document.getElementById("todayresult").innerHTML = "<span style='font-size:100px;font-weight:bold;'>" + crt + "</span><span style='font-size:50px;'>/25回</span><br><span style='font-size:30px;font-weight:bold;'>これまでの合計(アカウント連携):" + pussh + "</span>";
+  resetLocalStorage(); // 日付が変わった場合の処理
   gchg();
 }
 
-
-function gchg(){
+function gchg() {
   var currentDate = new Date();
   fflag++;
-  if(fflag==3){
-
+  if (fflag == 3) {
     var aar = [...userd1];
-    aar[3]=localStorage.getItem("pushlo");
+    aar[3] = parseInt(aar[3]) + parseInt(localStorage.getItem("pushlo"));
     console.log(aar);
-    $.post("https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec", { action: "updateUserData",username: "admin", newData: JSON.stringify(aar)});
+    $.post("https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec", { action: "updateUserData", username: "admin", newData: JSON.stringify(aar) });
 
-  fflag=0;
+    fflag = 0;
   }
 }
+
     </script>
     <style>
       #todayresult{
