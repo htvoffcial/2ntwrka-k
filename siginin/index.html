@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <title>2組ログイン</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="l-flex">
+        <div id="loginbox">
+            <center><small id="mmt">2組IDでログイン</small></center>
+            <form id="loginform" method="POST">
+                <div id="inputing">
+                    <label style="font-weight: bold;font-size: 20px;">ログイン</label>
+                    <div id="confirmbox"></div>
+                    <br>
+                    <label for="username">ユーザ名</label><br>
+                    <input type="text" id="username" name="username" required><br><br>
+                    <label for="password">パスワード</label><br>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <input type="button" value="続ける" id="camsb" onclick="ddaa()">
+                </div>
+
+            </form>
+        </div>
+        <div id="loadbox">
+            <div id="center1">認証中...</div>
+        </div>
+        <div class="blur"></div>
+    </div>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #camsb {
+            border: none;
+            padding: 10px 12px 10px 12px;
+            font-weight: bold;
+            background: chocolate;
+            border-radius: 10px;
+        }
+
+        #mmt {
+            margin-top: 2px;
+            font-size: 12px;
+        }
+
+        #inputing {
+            transform: translateX(20%)translateY(60%);
+        }
+
+        #center1 {
+            font-size: small;
+            transform: translateX(15vw)translateY(40vh);
+        }
+
+        #username,
+        #password {
+            margin: 10px;
+            outline: 0;
+            display: inline-block;
+            opacity: 0.8;
+            border: none;
+            padding: 6px;
+            border-bottom: solid 2px chocolate;
+        }
+
+        #l-flex {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flexbox;
+            background: url(https://ul.h3z.jp/NgB2ytzl.png);
+
+        }
+
+        #loginbox {
+            box-shadow: 10px 0px 320px 10px gray;
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            height: calc(100% - 20px);
+            width: 42%;
+            background-color: aliceblue;
+            border-radius: 10px 10px 0px 0px;
+
+        }
+
+        #loadbox {
+            display: none;
+            box-shadow: 10px 0px 320px 10px gray;
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            height: calc(100% - 20px);
+            width: 42%;
+            background-color: aliceblue;
+            border-radius: 10px 10px 0px 0px;
+            z-index: 1000;
+        }
+
+        @media screen and (max-width: 600px) {
+            #sdaf{
+                display: block;
+            }
+            #l-flex {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background: url(https://ul.h3z.jp/NgB2ytzl.png);
+
+            }
+
+            #inputing {
+                display: inline-block;
+                transform: translateX(10%)translateY(40%);
+            }
+
+            .blur {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                z-index: 500;
+                filter: blur(5px);
+            }
+
+            #loginbox {
+                z-index: 999;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: calc(100% - 20px);
+                width: 80%;
+                background-color: aliceblue;
+                border-radius: 10px 10px 10px 10px;
+                transform: translateX(-50%)translateY(-50%);
+            }
+
+            #loadbox {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: calc(100% - 20px);
+                width: 80%;
+                background-color: aliceblue;
+                border-radius: 10px 10px 10px 10px;
+                transform: translateX(-50%)translateY(-50%);
+            }
+
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+    </style>
+    <script>
+        var usdr;
+        $.ajax({ type: "POST", url: "https://script.google.com/macros/s/AKfycbyCAeXmOPCBwtgkvNcRWmAWI46X-UgLNyuD-nxog1f6xKv6NmVgsLm9oaFxuTBuLWL2RQ/exec", data: { p1: GETURL1("token") }}).done(function (u) {var rrst =JSON.parse(u);usdr = rrst[6];document.getElementById("confirmbox").innerHTML="<a style='text-decoration:none;color:#21A0DB;font-size:12px;' href='"+usdr+"'>"+rrst[1]+"</a><sapn style='font-size:10px;' id='sdaf'>へアクセスするにはログインが必要です</span>";});
+
+            function ddaa() {
+                document.getElementById("loadbox").style.display = "block";
+                var username = $("#username").val();
+                var password = $("#password").val();
+                localStorage.setItem("id1", username);
+                // ログインリクエストを送信
+                $.ajax({
+                    url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+                    method: "POST",
+                    data: {
+                        action: "login",
+                        username: username,
+                        password: password
+                    },
+                    success: function (response) {
+                        if (response === "success") {
+                            window.location.href = usdr; // ログイン成功時にダッシュボードページにリダイレクト
+                        } else {
+                            alert("Invalid username or password."); // ログイン失敗時のエラーメッセージ
+                            document.getElementById("loadbox").style.display = "none";
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while processing your request."); // リクエストの処理中にエラーが発生した場合のエラーメッセージ
+                    }
+                });
+            }
+            function GETURL1(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+    </script>
+</body>
+
+</html>
