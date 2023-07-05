@@ -1,0 +1,27 @@
+function ddaa(){
+        document.getElementById("loadbox").style.display="block";
+        var username = $("#username").val();
+        var password = $("#password").val();
+        localStorage.setItem("id1",username);
+        // ログインリクエストを送信
+        $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+          method: "POST",
+          data: { 
+            action: "login",
+            username: username,
+            password: password
+          },
+          success: function(response) {
+            if (response === "success") {
+              window.location.href = "dashboard.html"; // ログイン成功時にダッシュボードページにリダイレクト
+            } else {
+              alert("Invalid username or password."); // ログイン失敗時のエラーメッセージ
+              document.getElementById("loadbox").style.display="none";
+            }
+          },
+          error: function() {
+            alert("An error occurred while processing your request."); // リクエストの処理中にエラーが発生した場合のエラーメッセージ
+          }
+        });
+      }

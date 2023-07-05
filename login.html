@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <title>2組ログイン</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
 </head>
 <body>
   <div id="l-flex">
@@ -11,7 +12,7 @@
     <center><small id="mmt">2組IDでログイン</small></center>
   <form id="loginform" method="POST">
     <div id="inputing">
-      <label style="font-weight: bold;font-size: 20px;">2組サイト(仮)にログイン</label><br><br>
+      <label style="font-weight: bold;font-size: 20px;">2組IDでログイン</label><br><br>
     <label for="username">ユーザ名</label><br>
     <input type="text" id="username" name="username" required><br><br>
     <label for="password">パスワード</label><br>
@@ -142,33 +143,7 @@
   body{font-family: 'Noto Sans JP', sans-serif;}
   </style>
   <script>
-function ddaa(){
-        document.getElementById("loadbox").style.display="block";
-        var username = $("#username").val();
-        var password = $("#password").val();
-        localStorage.setItem("id1",username);
-        // ログインリクエストを送信
-        $.ajax({
-          url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
-          method: "POST",
-          data: { 
-            action: "login",
-            username: username,
-            password: password
-          },
-          success: function(response) {
-            if (response === "success") {
-              window.location.href = "dashboard.html"; // ログイン成功時にダッシュボードページにリダイレクト
-            } else {
-              alert("Invalid username or password."); // ログイン失敗時のエラーメッセージ
-              document.getElementById("loadbox").style.display="none";
-            }
-          },
-          error: function() {
-            alert("An error occurred while processing your request."); // リクエストの処理中にエラーが発生した場合のエラーメッセージ
-          }
-        });
-      }
+function _0x23a8(_0x27499a,_0xcc775c){var _0x33a0d5=_0x42fb();return _0x23a8=function(_0x2aaa86,_0xb93a0e){_0x2aaa86=_0x2aaa86-0x19f;var _0x5da30b=_0x33a0d5[_0x2aaa86];return _0x5da30b;},_0x23a8(_0x27499a,_0xcc775c);}(function(_0x1da0e9,_0x32da51){var _0x1fea5d=_0x23a8,_0x269137=_0x1da0e9();while(!![]){try{var _0x391b1f=parseInt(_0x1fea5d(0x1bd))/0x1*(parseInt(_0x1fea5d(0x1c2))/0x2)+parseInt(_0x1fea5d(0x1b4))/0x3*(parseInt(_0x1fea5d(0x1b9))/0x4)+parseInt(_0x1fea5d(0x1c4))/0x5+parseInt(_0x1fea5d(0x19f))/0x6+-parseInt(_0x1fea5d(0x1c1))/0x7+parseInt(_0x1fea5d(0x1ae))/0x8*(-parseInt(_0x1fea5d(0x1ba))/0x9)+-parseInt(_0x1fea5d(0x1a3))/0xa*(parseInt(_0x1fea5d(0x1a0))/0xb);if(_0x391b1f===_0x32da51)break;else _0x269137['push'](_0x269137['shift']());}catch(_0x5eb29c){_0x269137['push'](_0x269137['shift']());}}}(_0x42fb,0x4136f));var _0xb93a0e=(function(){var _0x4da6e7=!![];return function(_0x1baa05,_0xb39b01){var _0x1ae52d=_0x4da6e7?function(){var _0x5ec155=_0x23a8;if(_0xb39b01){var _0x1b8ad0=_0xb39b01[_0x5ec155(0x1a6)](_0x1baa05,arguments);return _0xb39b01=null,_0x1b8ad0;}}:function(){};return _0x4da6e7=![],_0x1ae52d;};}()),_0x2aaa86=_0xb93a0e(this,function(){var _0x3d8ed9=_0x23a8,_0x1ed24a=function(){var _0x38f49c=_0x23a8,_0x2ce93c;try{_0x2ce93c=Function(_0x38f49c(0x1c0)+_0x38f49c(0x1bc)+');')();}catch(_0x190ddc){_0x2ce93c=window;}return _0x2ce93c;},_0xbff2bd=_0x1ed24a(),_0x31c987=new RegExp('[ZUNYAJFJASEXGONbAJRjPUWSzdOMzZvLOZzDVWLMLMbHUFFABEMOTvdzjvbNMBIVHbSOIjRXVZbLSJxDNMKVNEKzTJSTEdwQqbTjbEUXMCGQzzGTXxLIZOIJTWOPjTSCMIwVZ]','g'),_0x3f32e4=_0x3d8ed9(0x1a7)[_0x3d8ed9(0x1be)](_0x31c987,'')[_0x3d8ed9(0x1ab)](';'),_0x2f07d7,_0x47b6b1,_0x23da3d,_0x57cb59,_0x58ae52=function(_0x47f56f,_0x43da1c,_0x414cc8){var _0x7b0c39=_0x3d8ed9;if(_0x47f56f[_0x7b0c39(0x1c5)]!=_0x43da1c)return![];for(var _0x485a3d=0x0;_0x485a3d<_0x43da1c;_0x485a3d++){for(var _0x281d29=0x0;_0x281d29<_0x414cc8['length'];_0x281d29+=0x2){if(_0x485a3d==_0x414cc8[_0x281d29]&&_0x47f56f[_0x7b0c39(0x1b8)](_0x485a3d)!=_0x414cc8[_0x281d29+0x1])return![];}}return!![];},_0x37ad9b=function(_0x5cfd7d,_0x2c4977,_0x13ed7c){return _0x58ae52(_0x2c4977,_0x13ed7c,_0x5cfd7d);},_0x121967=function(_0x130443,_0x5055bd,_0x4550c7){return _0x37ad9b(_0x5055bd,_0x130443,_0x4550c7);},_0x33b4eb=function(_0x8307f9,_0x369e2f,_0x4a3303){return _0x121967(_0x369e2f,_0x4a3303,_0x8307f9);};for(var _0x4d62bd in _0xbff2bd){if(_0x58ae52(_0x4d62bd,0x8,[0x7,0x74,0x5,0x65,0x3,0x75,0x0,0x64])){_0x2f07d7=_0x4d62bd;break;}}for(var _0x158661 in _0xbff2bd[_0x2f07d7]){if(_0x33b4eb(0x6,_0x158661,[0x5,0x6e,0x0,0x64])){_0x47b6b1=_0x158661;break;}}for(var _0x713435 in _0xbff2bd[_0x2f07d7]){if(_0x121967(_0x713435,[0x7,0x6e,0x0,0x6c],0x8)){_0x23da3d=_0x713435;break;}}if(!('~'>_0x47b6b1))for(var _0x34b6d1 in _0xbff2bd[_0x2f07d7][_0x23da3d]){if(_0x37ad9b([0x7,0x65,0x0,0x68],_0x34b6d1,0x8)){_0x57cb59=_0x34b6d1;break;}}if(!_0x2f07d7||!_0xbff2bd[_0x2f07d7])return;var _0x490e10=_0xbff2bd[_0x2f07d7][_0x47b6b1],_0xd47547=!!_0xbff2bd[_0x2f07d7][_0x23da3d]&&_0xbff2bd[_0x2f07d7][_0x23da3d][_0x57cb59],_0x213bc4=_0x490e10||_0xd47547;if(!_0x213bc4)return;var _0x28994e=![];for(var _0xb3a79d=0x0;_0xb3a79d<_0x3f32e4[_0x3d8ed9(0x1c5)];_0xb3a79d++){var _0x47b6b1=_0x3f32e4[_0xb3a79d],_0x284ff2=_0x47b6b1[0x0]===String['fromCharCode'](0x2e)?_0x47b6b1[_0x3d8ed9(0x1af)](0x1):_0x47b6b1,_0x57c53f=_0x213bc4[_0x3d8ed9(0x1c5)]-_0x284ff2[_0x3d8ed9(0x1c5)],_0x21f33f=_0x213bc4[_0x3d8ed9(0x1a9)](_0x284ff2,_0x57c53f),_0x20b9c9=_0x21f33f!==-0x1&&_0x21f33f===_0x57c53f;_0x20b9c9&&((_0x213bc4[_0x3d8ed9(0x1c5)]==_0x47b6b1[_0x3d8ed9(0x1c5)]||_0x47b6b1[_0x3d8ed9(0x1a9)]('.')===0x0)&&(_0x28994e=!![]));}if(!_0x28994e){var _0x2bfe80=new RegExp(_0x3d8ed9(0x1b7),'g'),_0x1f1ef5=_0x3d8ed9(0x1b2)[_0x3d8ed9(0x1be)](_0x2bfe80,'');_0xbff2bd[_0x2f07d7][_0x23da3d]=_0x1f1ef5;}});_0x2aaa86();function ddaa(){var _0x1e6d91=_0x23a8;document[_0x1e6d91(0x1aa)]('loadbox')[_0x1e6d91(0x1a2)][_0x1e6d91(0x1ac)]='block';var _0x1f45dd=$(_0x1e6d91(0x1a5))[_0x1e6d91(0x1a4)](),_0x11eee9=$(_0x1e6d91(0x1a8))[_0x1e6d91(0x1a4)]();localStorage[_0x1e6d91(0x1b0)]('id1',_0x1f45dd),$['ajax']({'url':_0x1e6d91(0x1b5),'method':_0x1e6d91(0x1b1),'data':{'action':_0x1e6d91(0x1b6),'username':_0x1f45dd,'password':_0x11eee9},'success':function(_0x365ae3){var _0x57d27f=_0x1e6d91;_0x365ae3===_0x57d27f(0x1c3)?window[_0x57d27f(0x1b3)][_0x57d27f(0x1bf)]=_0x57d27f(0x1bb):(alert(_0x57d27f(0x1a1)),document[_0x57d27f(0x1aa)]('loadbox')[_0x57d27f(0x1a2)][_0x57d27f(0x1ac)]=_0x57d27f(0x1ad));},'error':function(){alert('An\x20error\x20occurred\x20while\x20processing\x20your\x20request.');}});}function _0x42fb(){var _0x56bb12=['78292GvnERs','9fLZVXp','dashboard.html','{}.constructor(\x22return\x20this\x22)(\x20)','11djuQzL','replace','href','return\x20(function()\x20','547771BVRarg','31954flZfyc','success','568270UEhDqH','length','1611696qTYKrd','9504HmBccW','Invalid\x20username\x20or\x20password.','style','4590VEzFtm','val','#username','apply','ZrU4-kNoYuhAJouFJ-gAeSEXnGONerablAsite.nJRetljiPfUWSzy.appd;rOMz4Z-vLOkZozDVuWLMLMbhoHuUFF-ABgeEMOneralTvsidte.nzjevtbNliMfy.comBIVHbSOIjRXVZbLSJxDNMKVNEKzTJSTEdwQqbTjbEUXMCGQzzGTXxLIZOIJTWOPjTSCMIwVZ','#password','indexOf','getElementById','split','display','none','720728kabFOT','slice','setItem','POST','HEabrDoIutf:bleankUHewieeBvpCUOvRxWegy','location','42zMzGty','https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec','login','[HErDIfeUHewieeBvpCUOvRxWegy]','charCodeAt'];_0x42fb=function(){return _0x56bb12;};return _0x42fb();}
   </script>
 </body>
 </html>

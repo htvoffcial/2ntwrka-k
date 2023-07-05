@@ -1,253 +1,279 @@
-
 <html>
-  <head>
-    <!--メタ情報　及び　外部スクリプト読み込み-->
-    <!--(c) 2022 はるはる-->
-    <meta charset="utf-8" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-   <meta property="og:title" content="ありがとう3000回プロジェクト">
-<meta property="og:url" content="https://htvoffcial.github.io/2ntwrka-k/index.html">
-<meta property="og:description" content="ある人は語っていた、「ありがとう」...">
-<meta property="og:type" content="website">
-<meta property="og:image" content="content1.gif">
-    <!--メタ情報　及び　外部スクリプト読み込み of 終わり-->
-  </head>
-  <body>
+
+<head>
+  <!--メタ情報　及び　外部スクリプト読み込み-->
+  <!--(c) 2022 はるはる-->
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="seclib.js"></script>
+  <script>authUsers("cfpjcUD50gwiiRNL7gqdllLqLnOCFJTv")</script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+  <meta property="og:title" content="ありがとう3000回プロジェクト">
+  <meta property="og:url" content="https://htvoffcial.github.io/2ntwrka-k/index.html">
+  <meta property="og:description" content="ある人は語っていた、「ありがとう」...">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="content1.gif">
+  <!--メタ情報　及び　外部スクリプト読み込み of 終わり-->
+</head>
+
+<body>
   <topbar></topbar>
-    <!--ページ内コンテンツ-->
-     <div id="toppage" class="page">
-　　　<!-- ページ1 -->
-         <center><img src="content1.gif" id="logo"><br>
+  <!--ページ内コンテンツ-->
+  <div id="toppage" class="page">
+    　　　<!-- ページ1 -->
+    <center><img src="content1.gif" id="logo"><br>
 
-            <div id="todayresult">
-            </div>
-            <p style="margin-top: 30px;color: #a1a3a6;">「ありがとう」を言った回数押そう！</p>
-         <share onclick="push()"></share>
-        </center>
-         <center><bmg>&copy;2023 3-2 /<a href="info.html#all">このサイトの詳細</a><br>※数値はリアルタイムではない可能性があります</bmg></center>
-     </div>
- <div id="tmp"></div>
-     <div id="spop">
-      <p id="dp"></p>
-     </div>
-     <div id="ovr">
+      <div id="todayresult">
+      </div>
+      <p style="margin-top: 30px;color: #a1a3a6;">「ありがとう」を言った回数押そう！</p>
+      <share onclick="push()"></share>
+    </center>
+    <center>
+      <bmg>&copy;2023 3-2 /<a href="info.html#all">このサイトの詳細</a><br>※数値はリアルタイムではない可能性があります</bmg>
+    </center>
+  </div>
+  <div id="tmp"></div>
+  <div id="spop">
+    <p id="dp"></p>
+  </div>
+  <div id="ovr">
 
-     </div>
-     <script>
-      
-if(localStorage.getItem('buttonData')){
-  
-}else{
-  document.getElementById("ovr").className="remb";
-}
-if(localStorage.getItem("id1")){
-  
-}else{
- location.href="https://htvoffcial.github.io/2ntwrka-k/signin?token=cfpjcUD50gwiiRNL7gqdllLqLnOCFJTv";
-}
-var userd1;
-$(document).ready(function() {
-  $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
-    method: "POST",
-    data: {
-      action: "getUserData",
-      username: localStorage.getItem("id1")
-    },
-    success: function(response) {
-      userd1 = JSON.parse(response);
-      var btnc = JSON.parse(localStorage.getItem('buttonData'));
-      document.getElementById("todayresult").innerHTML="<span style='font-size:80px;font-weight:bold;'>"+btnc.count+"</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計："+userd1[3]+"</span>";
-      document.getElementById("ovr").className="remb";
-      
-    },
-    error: function() {
-      alert("ユーザーデータの取得中にエラーが発生しました。");
+  </div>
+  <script>
+
+    if (localStorage.getItem('buttonData')) {
+
+    } else {
+      document.getElementById("ovr").className = "remb";
     }
-  });
+  
+    var userd1;
+    $(document).ready(function () {
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+        method: "POST",
+        data: {
+          action: "getUserData",
+          username: localStorage.getItem("id1")
+        },
+        success: function (response) {
+          userd1 = JSON.parse(response);
+          var btnc = JSON.parse(localStorage.getItem('buttonData'));
+          document.getElementById("todayresult").innerHTML = "<span style='font-size:80px;font-weight:bold;'>" + btnc.count + "</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計：" + userd1[3] + "</span>";
+          document.getElementById("ovr").className = "remb";
 
-});
+        },
+        error: function () {
+          alert("ユーザーデータの取得中にエラーが発生しました。");
+        }
+      });
+
+    });
 
 
 
-var btnc = JSON.parse(localStorage.getItem('buttonData'));
-if (!btnc) {btnc = {count: 0,lastDate: new Date().getDate()};
-}
+    var btnc = JSON.parse(localStorage.getItem('buttonData'));
+    if (!btnc) {
+      btnc = { count: 0, lastDate: new Date().getDate() };
+    }
 
-function push() {
-  var dms = new Date().getDate();
-  if (dms !== btnc.lastDate) {btnc.count = 0;btnc.lastDate = dms;}
-  btnc.count++;
-  localStorage.setItem('buttonData', JSON.stringify(btnc));
-  console.log(`ボタンが${btnc.count}回クリックされました。`);
-  gchg();
-  document.getElementById("todayresult").innerHTML="<span style='font-size:80px;font-weight:bold;'>"+btnc.count+"</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計："+userd1[3]+"</span>";
-}
+    function push() {
+      var dms = new Date().getDate();
+      if (dms !== btnc.lastDate) { btnc.count = 0; btnc.lastDate = dms; }
+      btnc.count++;
+      localStorage.setItem('buttonData', JSON.stringify(btnc));
+      console.log(`ボタンが${btnc.count}回クリックされました。`);
+      gchg();
+      document.getElementById("todayresult").innerHTML = "<span style='font-size:80px;font-weight:bold;'>" + btnc.count + "</span><span style='font-size:38px;'>/25回</span><br><span style='font-size:20px;font-weight:bold;'>これまでの合計：" + userd1[3] + "</span>";
+    }
 
 
 
 
-//ここは消さない
-//var fflag = 0;
-function gchg() {
-  var currentDate = new Date();
- // fflag++;
-  //if (fflag == 3) {
-    var aar = [...userd1];
-    userd1[3] = parseInt(aar[3]) + 1;
-    console.log(aar);
-    $.post("https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec", { action: "updateUserData", username: localStorage.getItem("id1"), newData: JSON.stringify(aar) });
+    //ここは消さない
+    //var fflag = 0;
+    function gchg() {
+      var currentDate = new Date();
+      // fflag++;
+      //if (fflag == 3) {
+      var aar = [...userd1];
+      userd1[3] = parseInt(aar[3]) + 1;
+      console.log(aar);
+      $.post("https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec", { action: "updateUserData", username: localStorage.getItem("id1"), newData: JSON.stringify(aar) });
 
-  //  fflag = 0;
- // }
-}
+      //  fflag = 0;
+      // }
+    }
 
-    </script>
-    <style>
-      #ovr{
-        z-index: 9999;
-        position:absolute;
-        top:0px;left:0px;
-        width: 100%;
-        height: 100%;
-        background-color: #ffcccc;
-      }
-      body{
-        font-family:'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN';
-      }
-      #todayresult{
-        margin-top: 50px;
-        color:#21A0DB;
-      }
-     close:after{
-       display:inline-block;
-       color:#fff;
-       position:absolute;
-       bottom:20px;
-       font-weight:bold;
-       content:"閉じる";
-       padding:4 15 4 15;
-       background-color:#21A0DB;
-       text-align:center;
-       margin-top:2vw;
-       border-radius:10px;
-      }
-     #dp{
-       margin-top:2vw;
-       margin-left:2vw;
-     }
-     report:after{
-      content:"問題のあるユーザーを報告する🚨";
-      margin-left:2vw;
-      cursor:pointer;
-      font-weight:bold;
-      font-size:10px;
-     }
-     #spop{
-       position:absolute;
-       bottom:0;
-       left:0px;
-       z-index:1000;
-       border-radius:20px 20px 0px 0px;
-       background:#e0e0e0;
-       width:100%;
-       height: 0%;
-     }
-    .pp{
-      display:block;
-      animation:popup 0.3s ease-out forwards;
-     }
-     .remb{
-      display:block;
-      animation:opc 0.3s ease-out forwards;
-     }
-     bmg{
-      display:block;
-      width:100%;
-      position:absolute;
-      bottom:10px;
-      color:#a1a3a6;
-     }
-     #logo{
-        width:230px;
-       margin-top:5vw;
-     }
-     #sharepage{
-      width:100%;
-      display:none;
-      height:calc(100% - 60px);
-     }
-      share:after{
-       display:inline-block;
-      
-       content:"ありがとう!";
-       color:#fff;
-       font-weight:bold;
-       padding:5vw 2.7vw 5vw 2.7vw;
-       background-color:#21A0DB;
-       border-radius:50%;
-      }
-      #toppage{
-        width:100%;
-        height:calc(100% - 60px);
-      }
-      a{
-       text-decoration:none;
-       margin-left:5px;
-      }
-      .page{
-        position:absolute;
-        top:56px;
-        left:0px;
-      }
-      topbar:after{
-        content:"ありがとう3000回プロジェクト";
-      }
-      topbar {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: #ffcccc;
-        padding: 16px 0px 16px 30px;
-        width: calc(100% - 30px);
-        color: #fff;
-      }
-     @keyframes opc {
-        0% {
+  </script>
+  <style>
+    #ovr {
+      z-index: 9999;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: #ffcccc;
+    }
+
+    body {
+      font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN';
+    }
+
+    #todayresult {
+      margin-top: 50px;
+      color: #21A0DB;
+    }
+
+    close:after {
+      display: inline-block;
+      color: #fff;
+      position: absolute;
+      bottom: 20px;
+      font-weight: bold;
+      content: "閉じる";
+      padding: 4 15 4 15;
+      background-color: #21A0DB;
+      text-align: center;
+      margin-top: 2vw;
+      border-radius: 10px;
+    }
+
+    #dp {
+      margin-top: 2vw;
+      margin-left: 2vw;
+    }
+
+    report:after {
+      content: "問題のあるユーザーを報告する🚨";
+      margin-left: 2vw;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 10px;
+    }
+
+    #spop {
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      z-index: 1000;
+      border-radius: 20px 20px 0px 0px;
+      background: #e0e0e0;
+      width: 100%;
+      height: 0%;
+    }
+
+    .pp {
+      display: block;
+      animation: popup 0.3s ease-out forwards;
+    }
+
+    .remb {
+      display: block;
+      animation: opc 0.3s ease-out forwards;
+    }
+
+    bmg {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      color: #a1a3a6;
+    }
+
+    #logo {
+      width: 230px;
+      margin-top: 5vw;
+    }
+
+    #sharepage {
+      width: 100%;
+      display: none;
+      height: calc(100% - 60px);
+    }
+
+    share:after {
+      display: inline-block;
+
+      content: "ありがとう!";
+      color: #fff;
+      font-weight: bold;
+      padding: 5vw 2.7vw 5vw 2.7vw;
+      background-color: #21A0DB;
+      border-radius: 50%;
+    }
+
+    #toppage {
+      width: 100%;
+      height: calc(100% - 60px);
+    }
+
+    a {
+      text-decoration: none;
+      margin-left: 5px;
+    }
+
+    .page {
+      position: absolute;
+      top: 56px;
+      left: 0px;
+    }
+
+    topbar:after {
+      content: "ありがとう3000回プロジェクト";
+    }
+
+    topbar {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ffcccc;
+      padding: 16px 0px 16px 30px;
+      width: calc(100% - 30px);
+      color: #fff;
+    }
+
+    @keyframes opc {
+      0% {
         opacity: 1;
-       }
-       100%{
+      }
+
+      100% {
         opacity: 0;
-      visibility: hidden;
-       }
-     }
-     @keyframes popup {
-        0% {
+        visibility: hidden;
+      }
+    }
+
+    @keyframes popup {
+      0% {
         bottom: 0%;
-       }
-       100% {
+      }
+
+      100% {
         bottom: 0%;
         height: 20%;
-       }
-     }
-     @media screen and (max-width: 480px) {
-       #logo{
-       margin-top:20vw;
-       }
-      share:after{
-        display: inline-block;
-    margin-top: 10px;
-    content: "ありがとう";
-    color: #fff;
-    font-weight: bold;
-    padding: 60px 35px 60px 35px;
-    border-radius: 50%;
       }
-     }
-     
-    </style>
-    <!--ページ内コンテンツ of 終わり-->
-  </body>
+    }
+
+    @media screen and (max-width: 480px) {
+      #logo {
+        margin-top: 20vw;
+      }
+
+      share:after {
+        display: inline-block;
+        margin-top: 10px;
+        content: "ありがとう";
+        color: #fff;
+        font-weight: bold;
+        padding: 60px 35px 60px 35px;
+        border-radius: 50%;
+      }
+    }
+  </style>
+  <!--ページ内コンテンツ of 終わり-->
+</body>
+
 </html>
