@@ -1,0 +1,23 @@
+<iframe src="https://docs.google.com/presentation/d/1X0CkGVLM_uRvVW6u787qbfZfOeAf9iAIJAWKLmbHC_M/embed?start=true&loop=false&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" id="reloadarea"></iframe>
+<script>
+   function reloadIFrame() {
+  var currentTime = new Date();
+  var minutes = currentTime.getMinutes();
+  if (minutes >= 0 && minutes % 6 === 0) {
+    var iframe = document.getElementById('reloadarea');
+    iframe.src = iframe.src; 
+  }
+}
+
+setInterval(reloadIFrame, 60000);
+
+</script>
+<style>
+  #reloadarea{
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+  }
+</style>
