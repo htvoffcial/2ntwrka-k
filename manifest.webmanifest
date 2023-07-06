@@ -1,11 +1,11 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
+    "theme_color": "#ffcccc",
+    "background_color": "#ffcccc",
     "display": "browser",
     "scope": "/",
-    "start_url": "/index.html",
-    "name": "\u3042\u308a\u304c\u3068\u3046\u30dc\u30bf\u30f3!",
-    "short_name": "\u3042\u308a\u304c\u3068\u3046\u30dc\u30bf\u30f3\uff01",
+    "start_url": "/2ntwrka-k/index.html",
+    "name": "3-2\u3042\u308a\u304c\u3068\u3046\u30dc\u30bf\u30f3!",
+    "short_name": "3-2\u3042\u308a\u304c\u3068\u3046\u30dc\u30bf\u30f3\uff01",
     "icons": [
         {
             "src": "/icon-192x192.png",
