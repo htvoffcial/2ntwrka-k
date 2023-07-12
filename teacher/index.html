@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <span style="background-color:lightgoldenrodyellow;border-radius:10px 0px 0px 10px;display:block;padding:10px;font-weight: bold;">2組サイト</span>
+  2組ID<span id="syuxtusekinumber"></span><span id="usert2"></span>ようこそ<span id="usert1"></span>さん<br>
+  <br>
+  <a href="index.html"><img src="content1.gif"></a>
+  
+  <div>
+    
+  </div>
+  <script>
+    function replaceWithAsterisk(str) {
+  var length = Math.ceil(str.length * 0.6);
+  var replaceCount = Math.min(length, str.length); // 60%よりも文字列の長さが短い場合は文字列全体を置き換える
+
+  var chars = str.split('');
+  for (var i = 0; i < replaceCount; i++) {
+    chars[i] = '*';
+  }
+
+  return chars.join('');
+}
+      // $(document).ready(function() {
+      // ログイン後の画面でユーザーデータを取得するリクエストを送信
+      
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbwKiXHATrxOrYLQWPct4AIYqeFDcMO9ihhHIx5jeUOs2TZMsQGpHT_5dD8q-9o2Rzdh/exec",
+        method: "POST",
+        data: { 
+          action: "getUserData",
+          username: localStorage.getItem("id1") // ログインしたユーザーのユーザー名を設定
+        },
+        success: function(response) {
+          var userd1 = JSON.parse(response);
+          $("#userDataValue").text(response); // ユーザーデータを表示
+          $("#syuxtusekinumber").text(userd1[0]);
+          $("#usert1").text(userd1[2]);
+          var rsas = replaceWithAsterisk(localStorage.getItem("id1"));
+          $("#usert2").text(rsas);
+        },
+        error: function() {
+          alert("An error occurred while fetching user data."); // ユーザーデータの取得中にエラーが発生した場合のエラーメッセージ
+        }
+      });
+      if(localStorage.getItem("id1")){
+  
+}else{
+ location.href="https://htvoffcial.github.io/2ntwrka-k/signin/?token=tiyUMVq65L62TwZ87SB3rBe5VFdCTipT";
+}
+    </script>
+</body>
+<style>
+        #syuxtusekinumber{
+        display:inline-block;
+        border:solid 2px aquamarine;
+        padding:2px;border-radius: 5px;
+    }    
+    #syuxtusekinumber::before{
+        background-color: aquamarine;
+        content:"アカウント種別";
+    }    
+</style>
+</html>
